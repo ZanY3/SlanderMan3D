@@ -9,10 +9,11 @@ public class FlashLight : MonoBehaviour
     public Light Flight;
     public AudioSource source;
     public AudioClip clickSound;
-    private float lightBattery = 10;
+    private float lightBattery = 100;
     public TMP_Text bateryText;
     private void Start()
     {
+        Application.targetFrameRate = 60;
     }
     private void Update()
     {
@@ -23,7 +24,7 @@ public class FlashLight : MonoBehaviour
             source.PlayOneShot(clickSound);
         }
         Flight.enabled = isOn;
-        if (Flight.enabled = isOn)
+        if (isOn)
         {
             InvokeRepeating("BateryMinus", 0, 20);
         } 
@@ -37,7 +38,7 @@ public class FlashLight : MonoBehaviour
     {
         if(lightBattery >0)
         {
-            lightBattery -= 0.01f;
+            lightBattery -= 0.07f;
         }    
     }
 }
