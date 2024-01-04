@@ -9,7 +9,7 @@ public class FlashLight : MonoBehaviour
     public Light Flight;
     public AudioSource source;
     public AudioClip clickSound;
-    private float lightBattery = 100;
+    public float lightBattery = 100;
     public TMP_Text bateryText;
     private void Start()
     {
