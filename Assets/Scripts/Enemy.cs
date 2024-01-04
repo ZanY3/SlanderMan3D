@@ -11,15 +11,29 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
     public float viewDistance;
     public float wanderDistance;
+    public Animator animator;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        agent.speed = speed;
     }
     void Update()
     {
+        agent.speed = speed;
+        if (agent.velocity.magnitude == 0)
+        {
+            animator.Play("Idle");
+        }
+        else if (agent.velocity.magnitude < 3)
+        {
+            animator.Play("Walk");
+        }
+        else
+        {
+            animator.Play("Run");
+        }
+
         var distance = Vector3.Distance(transform.position, target.position);
         if(distance < viewDistance)
         {
